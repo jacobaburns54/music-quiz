@@ -10,16 +10,21 @@ public class Quiz {
 
         //fill major chords
         for(int i = 0; i < numMajor; i++) {
+            // System.out.println("Entering major fill loop");
             j = 0;
             while(j == 0) {
-                temp = majorSelection[(int)(Math.random() * (majorSelection.length + 1))];
+                // System.out.println("Entering major while loop");
+                temp = majorSelection[(int)(Math.random() * majorSelection.length)];
                 if(i != 0) {
-                    if(temp != tempChords[i-1]) {
+                    System.out.println("Major Chord not first");
+                    if(temp.getName() != tempChords[i-1].getName()) {
+                        // System.out.println("Major chord not equal to last, setting final chord value for index " + i + " to " + temp.getName());
                         tempChords[i] = temp;
                         j = 1;
                     }
                 }
                 else {
+                    // System.out.println("First major chord, setting final chord value for index " + i + " to " + temp.getName());
                     tempChords[i] = temp;
                     j = 1;
                 }
@@ -28,18 +33,23 @@ public class Quiz {
 
         //fill minor chords
         for(int i = numMajor; i < numChords; i++) {
+            // System.out.println("Entering minor fill loop");
             j = 0;
             while(j == 0) {
-                temp = minorSelection[(int)(Math.random() * (minorSelection.length + 1))];
+                // System.out.println("Entering minor while loop");
+                temp = minorSelection[(int)(Math.random() * minorSelection.length)];
                 if(i != numMajor) {
-                    if(temp != tempChords[i-1]) {
+                    // System.out.println("Minor Chord not first");
+                    if(temp.getName() != tempChords[i-1].getName()) {
+                        // System.out.println("Minor chord not equal to last, setting final chord value for index " + i + " to " + temp.getName());
                         tempChords[i] = temp;
                         j = 1;
                     }
-                    else {
-                        tempChords[i] = temp;
-                        j = 1;
-                    }
+                }
+                else {
+                    System.out.println("First minor chord, setting final chord value for index " + i + " to " + temp.getName());
+                    tempChords[i] = temp;
+                    j = 1;
                 }
             }
         }
@@ -61,7 +71,7 @@ public class Quiz {
         };
         Chord minorChords[] = {
             new Chord("aMinor", 'A', true, "aMinor.mp4"),
-            new Chord("BMinor", 'B', true, "bMinor.mp4"),
+            new Chord("bMinor", 'B', true, "bMinor.mp4"),
             new Chord("cMinor", 'C', true, "cMinor.mp4"),
             new Chord("dMinor", 'D', true, "DMinor.mp4"),
             new Chord("eMinor", 'E', true, "eMinor.mp4"),
@@ -70,6 +80,8 @@ public class Quiz {
         };
 
         int i = 0;
+        int tempMajC = 0;
+        int tempMinC = 0;
         while(i == 0) {
             System.out.println("Please select difficulty:\n1. Only 3 different chords per quiz, no minor chords\n2. 5 chords per quiz, 2 of them are minor\n3. 10 chords per quiz, 5 of them are minor\n4. All major and minor chords\n5. Custom difficulty");
             int c = userIn.nextInt();
@@ -77,27 +89,30 @@ public class Quiz {
             Chord[] quizChords;
             switch(c) {
                 case 1: 
-                    quizChords = fillQuizChords(3, 0, majorChords, minorChords);
+                    tempMajC = 3;
+                    tempMinC = 0;
                     i = 1;
                     break;
                 case 2:
-                    quizChords = fillQuizChords(3, 2, majorChords, minorChords);
+                    tempMajC = 3;
+                    tempMinC = 2;
                     i = 1;
                     break;
                 case 3:
-                    quizChords = fillQuizChords(5, 5, majorChords, minorChords);
+                    tempMajC = 5;
+                    tempMinC = 5;
                     i = 1;
                     break;
                 case 4:
-                    quizChords = fillQuizChords(majorChords.length, minorChords.length, majorChords, minorChords);
+                    tempMajC = majorChords.length;
+                    tempMinC = minorChords.length;
                     i = 1;
                     break;
                 case 5:
                     System.out.println("# of major chords: ");
-                    int tempMajC = userIn.nextInt();
+                    tempMajC = userIn.nextInt();
                     System.out.println("# of minor chords: ");
-                    int tempMinC = userIn.nextInt();
-                    quizChords = fillQuizChords(tempMajC, tempMinC, majorChords, minorChords);
+                    tempMinC = userIn.nextInt();
                     i = 1;
                     break;
                 default:
@@ -105,11 +120,11 @@ public class Quiz {
                     break;
             }
         }
+        Chord[] quizChords = fillQuizChords(tempMajC, tempMinC, majorChords, minorChords);
 
         for(int j = 0; j < quizChords.length; j++) {
-            System.out.println(quizChords[i].getName);
+            System.out.println(quizChords[j].getName());
         }
         userIn.close();
     }
 }
-
