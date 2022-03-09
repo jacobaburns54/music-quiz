@@ -122,9 +122,37 @@ public class Quiz {
         }
         Chord[] quizChords = fillQuizChords(tempMajC, tempMinC, majorChords, minorChords);
 
+        System.out.println("Chords: ");
         for(int j = 0; j < quizChords.length; j++) {
             System.out.println(quizChords[j].getName());
         }
+
+        //quiz start
+        String name = null;
+        System.out.print(name);
+
+        System.out.println("\n\n\n\nWhat is your name?");
+        name = userIn.next();
+
+        //randomize order of array
+        for(int k = quizChords.length-1; k > -1; k--) {
+            for(int l = 0; l < k; l++) {
+                Chord temp = quizChords[(int)Math.random() * (k + 1)];
+                quizChords[k] = temp;
+                System.out.println("Set value of index " + k + " to " + temp.getName());
+            }
+        }
+
+        System.out.println("Chords: ");
+        for(int m = 0; m < quizChords.length; m++) {
+            System.out.println(quizChords[m].getName());
+        }
+
+        //run through array, play sound and ask for answer
+            //update score if correct
+
+        //say score, high score
+
         userIn.close();
     }
 }
