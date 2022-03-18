@@ -1,6 +1,7 @@
 // import java.lang.reflect.Method;
 import java.lang.Math;
 import java.util.Scanner;
+
 public class Quiz {
 
     public static Chord[] fillQuizChords(int numMajor, int numMinor, Chord[] majorSelection, Chord[] minorSelection) {
@@ -10,9 +11,10 @@ public class Quiz {
 
         //fill major chords
         for(int i = 0; i < numMajor; i++) {
-            System.out.println("Entering major fill loop");
+            // System.out.println("Entering major fill loop");
             j = 0;
             while(j == 0) {
+
                 // System.out.println("Entering major while loop");
                 temp = majorSelection[(int)(Math.random() * majorSelection.length)];
                 if(i != 0) {

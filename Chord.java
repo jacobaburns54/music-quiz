@@ -3,7 +3,7 @@ public class Chord {
     private char letter;
     private boolean isMinor;
     private boolean isSharp;
-    private String sound;
+    private String filename;
 
     public void playChord() {
 
@@ -25,21 +25,21 @@ public class Chord {
         return isSharp;
     }
 
-    public String getSound() {
-        return sound;
+    public String getFilename() {
+        return filename;
     }
 
-    public Chord(String name, char letter, boolean isMinor, String sound) {
+    public Chord(String name, char letter, boolean isMinor, String filename) {
         this.name = name;
         this.letter = letter;
         this.isMinor = isMinor;
-        this.sound = sound;
+        this.filename = filename;
     }
 
-    public Chord(String name, char letter, String sound) {
+    public Chord(String name, char letter, String filename) {
         this.name = name;
         this.letter = letter;
         this.isMinor = false;
-        this.sound = sound;
+        this.filename = filename;
     }
 }
