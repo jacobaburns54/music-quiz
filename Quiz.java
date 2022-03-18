@@ -10,13 +10,13 @@ public class Quiz {
 
         //fill major chords
         for(int i = 0; i < numMajor; i++) {
-            // System.out.println("Entering major fill loop");
+            System.out.println("Entering major fill loop");
             j = 0;
             while(j == 0) {
                 // System.out.println("Entering major while loop");
                 temp = majorSelection[(int)(Math.random() * majorSelection.length)];
                 if(i != 0) {
-                    System.out.println("Major Chord not first");
+                    // System.out.println("Major Chord not first");
                     if(temp.getName() != tempChords[i-1].getName()) {
                         // System.out.println("Major chord not equal to last, setting final chord value for index " + i + " to " + temp.getName());
                         tempChords[i] = temp;
@@ -47,7 +47,7 @@ public class Quiz {
                     }
                 }
                 else {
-                    System.out.println("First minor chord, setting final chord value for index " + i + " to " + temp.getName());
+                    // System.out.println("First minor chord, setting final chord value for index " + i + " to " + temp.getName());
                     tempChords[i] = temp;
                     j = 1;
                 }
@@ -55,6 +55,44 @@ public class Quiz {
         }
 
         return tempChords;
+    }
+
+    public static Chord[] shuffleChords(Chord[] unshuffledArr) {
+        Chord tempChord = null;
+        Chord[] shuffledChords = new Chord[unshuffledArr.length];
+
+        int l = 0;
+
+        //run for every chord
+        for(int k = 0; k < unshuffledArr.length; k++) {
+            l = 0;
+
+            //l flag
+            while(l == 0) {
+
+                //make tempchord a random chord in array
+                tempChord = unshuffledArr[(int)(Math.random() * unshuffledArr.length)];
+                // System.out.println("set temp chord to " + tempChord.getName());
+
+                //flag var
+                boolean existsInArr = false;
+
+                //run for every chord already in shuffled array
+                for(int m = 0; m < shuffledChords.length; m++) {
+                    if(tempChord == shuffledChords[m] && m != k) {
+                        // System.out.println("found same chord " + shuffledChords[m].getName() + " as temp chord " + tempChord.getName() + " in shuffled arr at index " + m + ". running again");
+                        existsInArr = true;
+                    }
+                }
+                if(!existsInArr) {
+                    l = 1;
+                }
+            }
+            shuffledChords[k] = tempChord;
+            // System.out.println("set index " + k + " in shuffled chords to " + tempChord.getName());
+        }
+
+        return shuffledChords;
     }
 
     public static void main(String[] args) {
@@ -129,23 +167,16 @@ public class Quiz {
 
         //quiz start
         String name = null;
-        System.out.print(name);
 
         System.out.println("\n\n\n\nWhat is your name?");
         name = userIn.next();
 
         //randomize order of array
-        for(int k = quizChords.length-1; k > -1; k--) {
-            for(int l = 0; l < k; l++) {
-                Chord temp = quizChords[(int)Math.random() * (k + 1)];
-                quizChords[k] = temp;
-                System.out.println("Set value of index " + k + " to " + temp.getName());
-            }
-        }
+        Chord[] shuffledChords = shuffleChords(quizChords);
 
         System.out.println("Chords: ");
         for(int m = 0; m < quizChords.length; m++) {
-            System.out.println(quizChords[m].getName());
+            System.out.println(shuffledChords[m].getName());
         }
 
         //run through array, play sound and ask for answer
