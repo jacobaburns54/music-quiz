@@ -4,6 +4,20 @@ import java.util.Scanner;
 
 public class Quiz {
 
+    public boolean Ask(Chord chord, Chord[] selection) {
+        boolean correct = false;
+        Chord[] options = new Chord[4];
+        int offset = (int)(Math.random() * 4);
+        Chord randomSelection;
+        options[offset] = chord;
+
+        chord.playChord();
+        System.out.println("");
+
+
+        return correct;
+    }
+
     public static Chord[] fillQuizChords(int numMajor, int numMinor, Chord[] majorSelection, Chord[] minorSelection) {
         int j, numChords = numMajor + numMinor;
         Chord temp;
