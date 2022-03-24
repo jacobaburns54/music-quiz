@@ -103,7 +103,6 @@ public class SoundPlayer
 				long cc = scan.nextLong(); 
 				jump(cc); 
 				break; 
-	
 		} 
 	
 	} 
