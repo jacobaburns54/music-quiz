@@ -6,7 +6,6 @@ public class Chord {
     private boolean isMinor;
     private boolean isSharp;
     private String filename;
-    // SoundPlayer audioStream = new SoundPlayer();
 
     public void playChord() {
         Scanner userIn = new Scanner(System.in);
@@ -45,7 +44,6 @@ public class Chord {
                 answers[i] = selection[newOption];
                 //flag var = 1
             }
-
         }
 
         int rand = (int)(Math.random() * selection.length);
