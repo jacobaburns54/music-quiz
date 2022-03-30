@@ -11,7 +11,7 @@ public class Chord {
     public void playChord() {
         Scanner userIn = new Scanner(System.in);
 
-        //play sound filename
+        test.playAudio(filename);
 
         System.out.println("Would you like play the sound again? (Y/N)");
         String input = userIn.nextLine();
@@ -19,7 +19,7 @@ public class Chord {
 
         if(input == "N") return;
         else {
-            //play sound filename
+            test.playAudio(filename);
             return;
         }
 

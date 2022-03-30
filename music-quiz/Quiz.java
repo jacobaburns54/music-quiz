@@ -1,6 +1,9 @@
 // import java.lang.reflect.Method;
 import java.lang.Math;
 import java.util.Scanner;
+import java.io.IOException;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 
 public class Quiz {
 
@@ -194,6 +197,9 @@ public class Quiz {
         for(int m = 0; m < quizChords.length; m++) {
             System.out.println(shuffledChords[m].getName());
         }
+
+        Chord testChord = new Chord("test", 'T', "assets/vwoosh.wav");
+        testChord.playChord();
 
         //run through array, play sound and ask for answer
             //update score if correct
