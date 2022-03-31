@@ -1,9 +1,6 @@
 // import java.lang.reflect.Method;
 import java.lang.Math;
 import java.util.Scanner;
-import java.io.IOException;
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
 
 public class Quiz {
 
