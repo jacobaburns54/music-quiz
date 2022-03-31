@@ -33,10 +33,17 @@ public class Chord {
         else {
             answers = new Chord[4];
         }
-
+        
         //assign one spot in answers for correct option
         int correctAnswer = (int)(Math.random() * answers.length);
         answers[correctAnswer] = this;
+        
+        int j = 0;
+        while(j == 0) {
+            int newOption = (int)(Math.random()*answers.length);
+            for(int k = 0; k < )
+        }
+        
         //pick (answers.length-1) random chords from selection, not repeating, not equal to current chord
         for(int i = 0; i < answers.length; i++) {
             int newOption = (int)(Math.random()*answers.length);
