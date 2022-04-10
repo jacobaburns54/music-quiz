@@ -38,10 +38,14 @@ public class Chord {
         int correctAnswer = (int)(Math.random() * answers.length);
         answers[correctAnswer] = this;
         
-        int j = 0;
-        while(j == 0) {
+        int l = 0;
+        while(l == 0) {
             int newOption = (int)(Math.random()*answers.length);
-            for(int k = 0; k < )
+            for(int k = 0; k < answers.length; k++) {
+                if(answers[newOption] != answers[k]) {
+
+                }
+            }
         }
         
         //pick (answers.length-1) random chords from selection, not repeating, not equal to current chord

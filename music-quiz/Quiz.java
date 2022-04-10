@@ -4,6 +4,12 @@ import java.util.Scanner;
 
 public class Quiz {
 
+    // public Chord[] makeArrFromSelection(int finalArrLength, Chord[] selection) {
+    //     Chord[finalArrLength] finalArr; 
+
+    //     return finalArr;
+    // }
+
     public boolean Ask(Chord chord, Chord[] selection) {
         boolean correct = false;
         Chord[] options = new Chord[4];
